@@ -9,6 +9,15 @@ intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 tree = discord.app_commands.CommandTree(client)
 
+with open("characters.json", "r", encoding="utf-8") as character_file:
+    characters = json.load(character_file)
+
+def get_character(characters_list, character_name):
+    if character_name in characters_list:
+        return characters_list[character_name]
+    else:
+        return None
+
 @client.event
 async def on_ready():
     await tree.sync()
@@ -17,11 +26,21 @@ async def on_ready():
 @tree.command(name="測試", description="滷蛋很有錢")
 async def test_command(interactrion):
     await interactrion.response.send_message("滷蛋很有錢")
-with open("characters.json", "r", encoding="utf-8") as character_file:
-    characters = json.load(character_file)
+@tree.command(name="角色", description="查詢角色資料")
+async def search(interaction, character_name:str):
+    data = get_character(characters, character_name)
+    if data is not None:
+        await interaction.response.send_message(
+     f"找到角色: {character_name}\n"
+     f"屬性: {data['attribute']}\n"
+     f"武器: {data['weapon']}\n"
+     f"稀有度: {data['rarity']}"
+)
+    else:
+       await interaction.response.send_message("找不到角色")
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.0.1"
+version = "0.0.2"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(characters)
@@ -38,11 +57,7 @@ def search_character(characters_list, character_name):
         print(f"武器: {characters_list[character_name]["weapon"]}")
     else:
         print(f"查無此角色: {character_name}")
-def get_character(characters_list, character_name):
-    if character_name in characters_list:
-        return characters_list[character_name]
-    else:
-        return None
+
 def delete_character(characters_list, character_name):
     if character_name in characters_list:
         del characters_list[character_name]
