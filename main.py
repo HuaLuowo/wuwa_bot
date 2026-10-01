@@ -34,23 +34,28 @@ async def character_autocomplete(interaction,current:str):
                 name = character,
                 value = character
             ))
-    return result
+    return result[:25]
 @tree.command(name="角色", description="查詢角色資料")
 @discord.app_commands.autocomplete(character_name = character_autocomplete)
 async def search(interaction, character_name:str):
     data = get_character(characters, character_name)
     if data is not None:
-        await interaction.response.send_message(
-     f"找到角色: {character_name}\n"
-     f"屬性: {data['attribute']}\n"
-     f"武器: {data['weapon']}\n"
-     f"稀有度: {data['rarity']}"
-)
+        if data["attribute"] == "熱熔":
+            card_color = discord.Color.red()
+        elif data["attribute"] == "衍射":
+            card_color = discord.Color.yellow()
+        else:
+            card_color = discord.Color.blue()
+        card = discord.Embed(title = character_name, color = card_color)
+        card.add_field(name = "屬性", value = data["attribute"])
+        card.add_field(name = "武器", value = data["weapon"])
+        card.add_field(name="稀有度", value="★" * data["rarity"])
+        await interaction.response.send_message(embed = card)
     else:
        await interaction.response.send_message("找不到角色")
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.0.3"
+version = "0.0.5"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(characters)
