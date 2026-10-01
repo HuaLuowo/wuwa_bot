@@ -2,6 +2,7 @@ import json
 import discord
 import os
 from dotenv import load_dotenv
+from commands.character import get_character, character_autocomplete, create_character_card
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
@@ -12,12 +13,6 @@ tree = discord.app_commands.CommandTree(client)
 with open("characters.json", "r", encoding="utf-8") as character_file:
     characters = json.load(character_file)
 
-def get_character(characters_list, character_name):
-    if character_name in characters_list:
-        return characters_list[character_name]
-    else:
-        return None
-
 @client.event
 async def on_ready():
     await tree.sync()
@@ -26,44 +21,20 @@ async def on_ready():
 @tree.command(name="測試", description="滷蛋很有錢")
 async def test_command(interactrion):
     await interactrion.response.send_message("滷蛋很有錢")
-async def character_autocomplete(interaction,current:str):
-    result = []
-    for character in characters:
-        if current in character:
-            result.append(discord.app_commands.Choice(
-                name = character,
-                value = character
-            ))
-    return result[:25]
+async def character_autocomplete_main(interaction,current:str):
+    return await character_autocomplete(interaction, current, characters)
 @tree.command(name="角色", description="查詢角色資料")
-@discord.app_commands.autocomplete(character_name = character_autocomplete)
+@discord.app_commands.autocomplete(character_name = character_autocomplete_main)
 async def search(interaction, character_name:str):
     data = get_character(characters, character_name)
     if data is not None:
-        if data["attribute"] == "熱熔":
-            card_color = discord.Color.red()
-        elif data["attribute"] == "衍射":
-            card_color = discord.Color.yellow()
-        elif data["attribute"] == "冷凝":
-            card_color = discord.Color.blue()
-        elif data["attribute"] == "導電":
-            card_color = discord.Color.purple()
-        elif data["attribute"] == "氣動":
-            card_color = discord.Color.green()
-        elif data["attribute"] == "湮滅":
-            card_color = discord.Color.dark_purple()
-        else:
-            card_color = discord.Color.orange()
-        card = discord.Embed(title = character_name, color = card_color)
-        card.add_field(name = "屬性", value = data["attribute"])
-        card.add_field(name = "武器", value = data["weapon"])
-        card.add_field(name="稀有度", value="★" * data["rarity"])
-        await interaction.response.send_message(embed = card)
+        card = create_character_card(character_name, data)
+        await interaction.response.send_message(embed=card)
     else:
        await interaction.response.send_message("找不到角色")
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.0.6"
+version = "0.0.65"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(characters)
