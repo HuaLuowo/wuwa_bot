@@ -26,7 +26,17 @@ async def on_ready():
 @tree.command(name="測試", description="滷蛋很有錢")
 async def test_command(interactrion):
     await interactrion.response.send_message("滷蛋很有錢")
+async def character_autocomplete(interaction,current:str):
+    result = []
+    for character in characters:
+        if current in character:
+            result.append(discord.app_commands.Choice(
+                name = character,
+                value = character
+            ))
+    return result
 @tree.command(name="角色", description="查詢角色資料")
+@discord.app_commands.autocomplete(character_name = character_autocomplete)
 async def search(interaction, character_name:str):
     data = get_character(characters, character_name)
     if data is not None:
@@ -40,7 +50,7 @@ async def search(interaction, character_name:str):
        await interaction.response.send_message("找不到角色")
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.0.2"
+version = "0.0.3"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(characters)
