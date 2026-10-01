@@ -8,5 +8,10 @@
         "attribute": "熱熔",
         "weapon": "迅刀",
         "rarity": 5
-    }
+    },
+     "珂萊塔":{
+        "attribute": "冷凝",
+        "weapon": "配槍",
+        "rarity": 5
+     }
 }

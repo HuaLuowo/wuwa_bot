@@ -44,8 +44,16 @@ async def search(interaction, character_name:str):
             card_color = discord.Color.red()
         elif data["attribute"] == "衍射":
             card_color = discord.Color.yellow()
-        else:
+        elif data["attribute"] == "冷凝":
             card_color = discord.Color.blue()
+        elif data["attribute"] == "導電":
+            card_color = discord.Color.purple()
+        elif data["attribute"] == "氣動":
+            card_color = discord.Color.green()
+        elif data["attribute"] == "湮滅":
+            card_color = discord.Color.dark_purple()
+        else:
+            card_color = discord.Color.orange()
         card = discord.Embed(title = character_name, color = card_color)
         card.add_field(name = "屬性", value = data["attribute"])
         card.add_field(name = "武器", value = data["weapon"])
@@ -55,7 +63,7 @@ async def search(interaction, character_name:str):
        await interaction.response.send_message("找不到角色")
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.0.5"
+version = "0.0.6"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(characters)
