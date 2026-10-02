@@ -29,7 +29,7 @@ async def test_command(interactrion):
 
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.0.65"
+version = "0.0.7"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(characters)
