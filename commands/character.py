@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 
 def get_character(characters_list, character_name):
     if character_name in characters_list:
@@ -37,4 +38,21 @@ async def character_autocomplete(interaction, current, characters_list):
             value=character
             ))
     return result[:25]  
-      
+
+
+class CharacterCommands(commands.Cog):
+    def __init__(self, characters):
+        self.characters = characters
+
+    async def autocomplete_character(self, interaction, current:str):
+        return await character_autocomplete(interaction,current,self.characters)
+
+    @discord.app_commands.command(name = "角色", description="查詢角色資料")
+    @discord.app_commands.autocomplete(character_name=autocomplete_character)
+    async def search(self, interaction, character_name: str):
+        data = get_character(self.characters, character_name)
+        if data is not None:
+            card = create_character_card(character_name,data)
+            await interaction.response.send_message(embed = card)
+        else:
+            await interaction.response.send_message("找不到角色")

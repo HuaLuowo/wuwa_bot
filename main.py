@@ -2,17 +2,21 @@ import json
 import discord
 import os
 from dotenv import load_dotenv
-from commands.character import get_character, character_autocomplete, create_character_card
+from commands.character import CharacterCommands, get_character
+from discord.ext import commands
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
 intents = discord.Intents.default()
-client = discord.Client(intents=intents)
-tree = discord.app_commands.CommandTree(client)
+client = commands.Bot(command_prefix="!", intents=intents)
+tree = client.tree
 
 with open("characters.json", "r", encoding="utf-8") as character_file:
     characters = json.load(character_file)
 
+async def setup_hook():
+    await client.add_cog(CharacterCommands(characters))
+client.setup_hook = setup_hook
 @client.event
 async def on_ready():
     await tree.sync()
@@ -21,17 +25,8 @@ async def on_ready():
 @tree.command(name="測試", description="滷蛋很有錢")
 async def test_command(interactrion):
     await interactrion.response.send_message("滷蛋很有錢")
-async def character_autocomplete_main(interaction,current:str):
-    return await character_autocomplete(interaction, current, characters)
-@tree.command(name="角色", description="查詢角色資料")
-@discord.app_commands.autocomplete(character_name = character_autocomplete_main)
-async def search(interaction, character_name:str):
-    data = get_character(characters, character_name)
-    if data is not None:
-        card = create_character_card(character_name, data)
-        await interaction.response.send_message(embed=card)
-    else:
-       await interaction.response.send_message("找不到角色")
+
+
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
 version = "0.0.65"
