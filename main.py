@@ -3,6 +3,7 @@ import discord
 import os
 from dotenv import load_dotenv
 from commands.character import CharacterCommands
+from commands.weapon import WeaponCommands
 from discord.ext import commands
 
 load_dotenv()
@@ -13,9 +14,12 @@ tree = client.tree
 
 with open("characters.json", "r", encoding="utf-8") as character_file:
     characters = json.load(character_file)
+with open("weapons.json", "r", encoding="utf-8")as weapon_file:
+    weapons = json.load(weapon_file)
 
 async def setup_hook():
     await client.add_cog(CharacterCommands(characters))
+    await client.add_cog(WeaponCommands(weapons))
 client.setup_hook = setup_hook
 @client.event
 async def on_ready():
@@ -28,7 +32,7 @@ async def test_command(interactrion):
 
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.0.8"
+version = "0.1.0"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(f"目前支援角色數量: {len(characters)}")
