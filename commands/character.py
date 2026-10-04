@@ -1,11 +1,9 @@
 import discord
 from discord.ext import commands
 
-def get_character(characters_list, character_name):
-    if character_name in characters_list:
-        return characters_list[character_name]
-    else:
-        return None
+def get_character(characters, character_name):
+    return characters.find_one({"name": character_name})
+
 def get_attribute_color(attribute):
     if attribute == "熱熔":
         return discord.Color.red()
@@ -31,11 +29,12 @@ def create_character_card(character_name, data):
 
 async def character_autocomplete(interaction, current, characters_list):
     result = []
-    for character in characters_list:
-        if current in character:
+    for character in characters_list.find():
+        name = character["name"]
+        if current in name:
             result.append(discord.app_commands.Choice(
-            name=character,
-            value=character
+            name= name,
+            value= name
             ))
     return result[:25]  
 

@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 
-def get_weapon(weapons,weapon_name):
-    return weapons.get(weapon_name)
+def get_weapon(weapons, weapon_name):
+    return weapons.find_one({"name": weapon_name})
 
 def create_weapon_card(weapon_name, data):
     card = discord.Embed(title = weapon_name)
@@ -22,7 +22,8 @@ class WeaponCommands(commands.Cog):
         self.weapons = weapons
     async def weapon_autocomplete(self, interaction: discord.Interaction, current:str):
         matches = []
-        for name in self.weapons:
+        for weapon in self.weapons.find():
+            name = weapon["name"]
             if current in name:
                 matches.append(name)
         return [

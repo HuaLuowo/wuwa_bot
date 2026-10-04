@@ -5,20 +5,22 @@ from dotenv import load_dotenv
 from commands.character import CharacterCommands
 from commands.weapon import WeaponCommands
 from discord.ext import commands
+from pymongo import MongoClient
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
+mongo_uri = os.getenv("MONGO_URI")
+mongo_client = MongoClient(mongo_uri)
+db = mongo_client["wuwa_bot"]
+weapons = db["weapons"]
+characters_collection = db["characters"]
 intents = discord.Intents.default()
 client = commands.Bot(command_prefix="!", intents=intents)
 tree = client.tree
 
-with open("characters.json", "r", encoding="utf-8") as character_file:
-    characters = json.load(character_file)
-with open("weapons.json", "r", encoding="utf-8")as weapon_file:
-    weapons = json.load(weapon_file)
 
 async def setup_hook():
-    await client.add_cog(CharacterCommands(characters))
+    await client.add_cog(CharacterCommands(characters_collection))
     await client.add_cog(WeaponCommands(weapons))
 client.setup_hook = setup_hook
 @client.event
@@ -32,10 +34,10 @@ async def test_command(interactrion):
 
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.1.0"
+version = "0.2.1"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
-print(f"目前支援角色數量: {len(characters)}")
+print(f"目前支援角色數量: {characters_collection.count_documents({})}")
 
 print("本Discord bot名稱:",bot_name)
 print("作者:",author)
