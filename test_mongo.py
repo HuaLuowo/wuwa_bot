@@ -7,7 +7,6 @@ load_dotenv()
 mongo_uri = os.getenv("MONGO_URI")
 
 client = MongoClient(mongo_uri)
-
 client.admin.command("ping")
 print("MongoDB 連線成功！")
 
@@ -23,6 +22,11 @@ for name, data in characters_data.items():
     existing_character = characters.find_one({"name": name})
     if existing_character == None:
         characters.insert_one(data)
+    else:
+        characters.update_one(
+            {"name": name},
+            {"$set" : data}
+        )
 print(characters.count_documents({}))
 
 
@@ -44,3 +48,4 @@ for name, data in weapons_data.items():
 
 print(weapons.count_documents({}))
 print(weapons.find_one({"name": "時和歲稔"}))
+print(characters.find_one({"name": "今汐"}))

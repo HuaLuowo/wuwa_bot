@@ -1,0 +1,514 @@
+[
+    {
+        "id": 1402,
+        "name": "秧秧",
+        "rarity": 4,
+        "attribute": "氣動",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_1_UI.webp"
+    },
+    {
+        "id": 1202,
+        "name": "熾霞",
+        "rarity": 4,
+        "attribute": "熱熔",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_2_UI.webp"
+    },
+    {
+        "id": 1503,
+        "name": "維里奈",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_3_UI.webp"
+    },
+    {
+        "id": 1501,
+        "name": "漂泊者·衍射",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_4_UI.webp"
+    },
+    {
+        "id": 1102,
+        "name": "散華",
+        "rarity": 4,
+        "attribute": "冷凝",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_7_UI.webp"
+    },
+    {
+        "id": 1601,
+        "name": "桃祈",
+        "rarity": 4,
+        "attribute": "湮滅",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_9_UI.webp"
+    },
+    {
+        "id": 1502,
+        "name": "漂泊者·衍射",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_5_UI.webp"
+    },
+    {
+        "id": 1103,
+        "name": "白芷",
+        "rarity": 4,
+        "attribute": "冷凝",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_6_UI.webp"
+    },
+    {
+        "id": 1203,
+        "name": "安可",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_8_UI.webp"
+    },
+    {
+        "id": 1602,
+        "name": "丹瑾",
+        "rarity": 4,
+        "attribute": "湮滅",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_10_UI.webp"
+    },
+    {
+        "id": 1403,
+        "name": "秋水",
+        "rarity": 4,
+        "attribute": "氣動",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_12_UI.webp"
+    },
+    {
+        "id": 1404,
+        "name": "忌炎",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_11_UI.webp"
+    },
+    {
+        "id": 1204,
+        "name": "莫特斐",
+        "rarity": 4,
+        "attribute": "熱熔",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_13_UI.webp"
+    },
+    {
+        "id": 1603,
+        "name": "椿",
+        "rarity": 5,
+        "attribute": "湮滅",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_29_UI.webp"
+    },
+    {
+        "id": 1301,
+        "name": "卡卡羅",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_18_UI.webp"
+    },
+    {
+        "id": 1302,
+        "name": "吟霖",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_17_UI.webp"
+    },
+    {
+        "id": 1104,
+        "name": "凌陽",
+        "rarity": 5,
+        "attribute": "冷凝",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_14_UI.webp"
+    },
+    {
+        "id": 1303,
+        "name": "淵武",
+        "rarity": 4,
+        "attribute": "導電",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_15_UI.webp"
+    },
+    {
+        "id": 1604,
+        "name": "漂泊者·湮滅",
+        "rarity": 5,
+        "attribute": "湮滅",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_5_UI.webp"
+    },
+    {
+        "id": 1605,
+        "name": "漂泊者·湮滅",
+        "rarity": 5,
+        "attribute": "湮滅",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_4_UI.webp"
+    },
+    {
+        "id": 1405,
+        "name": "鑒心",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_23_UI.webp"
+    },
+    {
+        "id": 1304,
+        "name": "今汐",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_24_UI.webp"
+    },
+    {
+        "id": 1305,
+        "name": "相里要",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_25_UI.webp"
+    },
+    {
+        "id": 1205,
+        "name": "長離",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_26_UI.webp"
+    },
+    {
+        "id": 1105,
+        "name": "折枝",
+        "rarity": 5,
+        "attribute": "冷凝",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_27_UI.webp"
+    },
+    {
+        "id": 1504,
+        "name": "燈燈",
+        "rarity": 4,
+        "attribute": "導電",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_30_UI.webp"
+    },
+    {
+        "id": 1106,
+        "name": "釉瑚",
+        "rarity": 4,
+        "attribute": "冷凝",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_31_UI.webp"
+    },
+    {
+        "id": 1505,
+        "name": "守岸人",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_28_UI.webp"
+    },
+    {
+        "id": 1606,
+        "name": "洛可可",
+        "rarity": 5,
+        "attribute": "湮滅",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_33_UI.webp"
+    },
+    {
+        "id": 1107,
+        "name": "珂萊塔",
+        "rarity": 5,
+        "attribute": "冷凝",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_32_UI.webp"
+    },
+    {
+        "id": 1206,
+        "name": "布蘭特",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_44_UI.webp"
+    },
+    {
+        "id": 1506,
+        "name": "菲比",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_45_UI.webp"
+    },
+    {
+        "id": 1406,
+        "name": "漂泊者·氣動",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_4_UI.webp"
+    },
+    {
+        "id": 1607,
+        "name": "坎特蕾拉",
+        "rarity": 5,
+        "attribute": "湮滅",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_34_UI.webp"
+    },
+    {
+        "id": 1407,
+        "name": "夏空",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_37_UI.webp"
+    },
+    {
+        "id": 1507,
+        "name": "贊妮",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_38_UI.webp"
+    },
+    {
+        "id": 1408,
+        "name": "漂泊者·氣動",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_5_UI.webp"
+    },
+    {
+        "id": 1207,
+        "name": "露帕",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_46_UI.webp"
+    },
+    {
+        "id": 1608,
+        "name": "弗洛洛",
+        "rarity": 5,
+        "attribute": "湮滅",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_41_UI.webp"
+    },
+    {
+        "id": 1409,
+        "name": "卡提希婭",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_40_UI.webp"
+    },
+    {
+        "id": 1306,
+        "name": "奧古斯塔",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_51_UI.webp"
+    },
+    {
+        "id": 1410,
+        "name": "尤諾",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_48_UI.webp"
+    },
+    {
+        "id": 1307,
+        "name": "卜靈",
+        "rarity": 4,
+        "attribute": "導電",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_58_UI.webp"
+    },
+    {
+        "id": 1208,
+        "name": "嘉貝莉娜",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_55_UI.webp"
+    },
+    {
+        "id": 1508,
+        "name": "千咲",
+        "rarity": 5,
+        "attribute": "湮滅",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_57_UI.webp"
+    },
+    {
+        "id": 1411,
+        "name": "仇遠",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_56_UI.webp"
+    },
+    {
+        "id": 1509,
+        "name": "琳奈",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_60_UI.webp"
+    },
+    {
+        "id": 1209,
+        "name": "莫寧",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_61_UI.webp"
+    },
+    {
+        "id": 1510,
+        "name": "陸·赫斯",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_54_UI.webp"
+    },
+    {
+        "id": 1210,
+        "name": "愛彌斯",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_53_UI.webp"
+    },
+    {
+        "id": 1412,
+        "name": "西格莉卡",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "臂鎧",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_65_UI.webp"
+    },
+    {
+        "id": 1211,
+        "name": "達妮婭",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_64_UI.webp"
+    },
+    {
+        "id": 1308,
+        "name": "蕾貝卡",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_69_UI.webp"
+    },
+    {
+        "id": 1109,
+        "name": "洛瑟菈",
+        "rarity": 5,
+        "attribute": "冷凝",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_66_UI.webp"
+    },
+    {
+        "id": 1511,
+        "name": "露西",
+        "rarity": 5,
+        "attribute": "衍射",
+        "weapon": "佩槍",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_68_UI.webp"
+    },
+    {
+        "id": 1108,
+        "name": "緋雪",
+        "rarity": 5,
+        "attribute": "冷凝",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_67_UI.webp"
+    },
+    {
+        "id": 1309,
+        "name": "漂泊者·導電",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_4_UI.webp"
+    },
+    {
+        "id": 1310,
+        "name": "漂泊者·導電",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_5_UI.webp"
+    },
+    {
+        "id": 1610,
+        "name": "秧秧·玄翎",
+        "rarity": 5,
+        "attribute": "湮滅",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_70_UI.webp"
+    },
+    {
+        "id": 1110,
+        "name": "穗穗",
+        "rarity": 5,
+        "attribute": "冷凝",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_71_UI.webp"
+    },
+    {
+        "id": 1413,
+        "name": "清宵",
+        "rarity": 5,
+        "attribute": "氣動",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_73_UI.webp"
+    },
+    {
+        "id": 1311,
+        "name": "心",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "音感儀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_75_UI.webp"
+    },
+    {
+        "id": 1212,
+        "name": "景燃",
+        "rarity": 5,
+        "attribute": "熱熔",
+        "weapon": "長刃",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_74_UI.webp"
+    },
+    {
+        "id": 1312,
+        "name": "鎖暝",
+        "rarity": 5,
+        "attribute": "導電",
+        "weapon": "迅刀",
+        "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconRoleHead256/T_IconRoleHead256_76_UI.webp"
+    }
+]
