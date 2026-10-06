@@ -49,3 +49,19 @@ for name, data in weapons_data.items():
 print(weapons.count_documents({}))
 print(weapons.find_one({"name": "時和歲稔"}))
 print(characters.find_one({"name": "今汐"}))
+for character in characters.find():
+    print(
+        character["name"],
+        character.get(id),
+        len(character.get("skills",[])),
+        len(character.get("chains",[])),
+        len(character.get("breaches",[]))
+    )
+
+characters.update_one(
+    {"name": "今汐"},
+    {"$set": {"id": 1304}}
+)
+print("今汐ID: ", characters.find_one({"name":"今汐"}).get("id"))
+print("長離 ID:", characters.find_one({"name": "長離"}).get("id"))
+print("珂萊塔ID: ", characters.find_one({"name": "珂萊塔"}).get("id"))
