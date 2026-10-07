@@ -19,12 +19,37 @@ def get_attribute_color(attribute):
         return discord.Color.dark_purple()
     else:
         return discord.Color.orange()
+
 def create_character_card(character_name, data):
     card_color = get_attribute_color(data["attribute"])
     card = discord.Embed(title=character_name, color=card_color)
     card.add_field(name="屬性", value=data["attribute"])
     card.add_field(name="武器", value=data["weapon"])
     card.add_field(name="稀有度", value="★" * data["rarity"])
+    card.add_field(
+        name="角色資料",
+        value=f"生日: {data['profile']['birthday']}\n"
+              f"性別: {data['profile']['sex']}\n"
+              f"地區: {data['profile']['country']}\n"
+              f"勢力: {data['profile']['influence']}",
+              inline=False
+    )
+    card.set_thumbnail(url = data["image"])
+    tag_names = []
+    for tag in data["tags"]:
+        tag_names.append(tag["name"])
+    tag_text = "｜".join(tag_names)
+    card.add_field(
+        name = "角色定位",
+        value= tag_text,
+        inline=False
+    )
+    card.add_field(
+        name= "角色介紹",
+        value= data["introduction"],
+        inline=False
+    )
+
     return card
 
 async def character_autocomplete(interaction, current, characters_list):

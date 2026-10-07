@@ -121,6 +121,24 @@ for character in characters:
             "materials": materials
         }
         clean_breaches.append(clean_breach)
+
+    introduction = detail_data["Introduction"]["Content"]
+    introduction = re.sub(r"<.*?>", "", introduction)
+    clean_tags = []
+    for tag in detail_data["Tags"]:
+        clean_tag = {
+            "name": tag["TagName"],
+            "description": tag["TagDesc"]
+        }
+        clean_tags.append(clean_tag)
+
+    profile = {
+        "birthday": detail_data["favorRole"]["Birthday"]["Content"],
+        "sex": detail_data["favorRole"]["Sex"]["Content"],
+        "country": detail_data["favorRole"]["Country"]["Content"],
+        "influence": re.sub("<.*?>", "", detail_data["favorRole"]["Influence"]["Content"])
+    }
+    
     new_character_data = {
     "id": detail_data["Id"],
     "name": detail_data["Name"]["Content"],
@@ -129,6 +147,9 @@ for character in characters:
     "weapon" : detail_data["WeaponTypeName"],
     "image" : detail_data["RoleHeadIconLarge"],
     "character_image": detail_data["RolePortrait"],
+    "introduction": introduction,
+    "tags": clean_tags,
+    "profile": profile,
     "skills": clean_skills,
     "chains": clean_chains,
     "breaches": clean_breaches
