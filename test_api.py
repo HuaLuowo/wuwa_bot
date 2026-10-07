@@ -138,21 +138,14 @@ for character in characters:
     existing_character = characters_collection.find_one(
         {"id": new_character_data["id"]}
     )
-    if existing_character is None:
-        existing_character = characters_collection.find_one(
-            {"name": new_character_data["name"]}
-        )
-    if new_character_data["name"] in ["今汐", "長離", "珂萊塔", "鑒心"]:
-        print(
-            "Mongo查詢結果: ",
-            new_character_data["name"],
-            existing_character
-            )
+
     if existing_character is not None:
         characters_collection.update_one(
             {"_id": existing_character["_id"]},
             {"$set": new_character_data}
         )
+    else:
+        characters_collection.insert_one(new_character_data)
 
 print("完整角色數量: ", len(full_character_list))
 for character in full_character_list:
@@ -176,3 +169,5 @@ for character in full_character_list:
                     character["name"],
                     material["material_id"]
                 )
+
+print("MongoDB角色數量: ", characters_collection.count_documents({}))
