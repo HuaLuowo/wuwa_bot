@@ -34,7 +34,7 @@ async def test_command(interactrion):
 
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.4.0"
+version = "0.4.3"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(f"目前支援角色數量: {characters_collection.count_documents({})}")
