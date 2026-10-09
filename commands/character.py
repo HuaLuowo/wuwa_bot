@@ -76,7 +76,7 @@ class CharacterCommands(commands.Cog):
     async def search(self, interaction, character_name: str):
         data = get_character(self.characters, character_name)
         if data is not None:
-            card = create_character_card(character_name,data)
+            card = create_character_card(data["name"],data)
             await interaction.response.send_message(embed = card)
         else:
             await interaction.response.send_message("找不到角色")
