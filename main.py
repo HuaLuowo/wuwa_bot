@@ -6,6 +6,7 @@ from commands.character import CharacterCommands
 from commands.weapon import WeaponCommands
 from discord.ext import commands
 from pymongo import MongoClient
+from commands.skill import SkillCommands
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
@@ -22,6 +23,7 @@ tree = client.tree
 async def setup_hook():
     await client.add_cog(CharacterCommands(characters_collection))
     await client.add_cog(WeaponCommands(weapons))
+    await client.add_cog(SkillCommands(characters_collection))
 client.setup_hook = setup_hook
 @client.event
 async def on_ready():
@@ -34,7 +36,7 @@ async def test_command(interactrion):
 
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.4.3"
+version = "0.4.4"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(f"目前支援角色數量: {characters_collection.count_documents({})}")
