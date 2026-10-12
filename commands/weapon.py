@@ -45,5 +45,5 @@ class WeaponCommands(commands.Cog):
             card = create_weapon_card(weapon_name,data)
             await interaction.response.send_message(embed = card)
         else:
-            await interaction.response.send_massage("找不到武器")
+            await interaction.response.send_message("找不到武器")
     
