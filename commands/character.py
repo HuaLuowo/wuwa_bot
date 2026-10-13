@@ -34,7 +34,8 @@ def create_character_card(character_name, data):
               f"勢力: {data['profile']['influence']}",
               inline=False
     )
-    card.set_thumbnail(url = data["image"])
+    if data.get("image"):
+        card.set_thumbnail(url = data["image"])
     tag_names = []
     for tag in data["tags"]:
         tag_names.append(tag["name"])
