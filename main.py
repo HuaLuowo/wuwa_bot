@@ -8,6 +8,7 @@ from discord.ext import commands
 from pymongo import MongoClient
 from commands.skill import SkillCommands
 from commands.chain import ChainCommands
+from commands.echo import EchoCommands
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
@@ -15,6 +16,7 @@ mongo_uri = os.getenv("MONGO_URI")
 mongo_client = MongoClient(mongo_uri)
 db = mongo_client["wuwa_bot"]
 weapons = db["weapons"]
+echoes = db["echoes"]
 characters_collection = db["characters"]
 intents = discord.Intents.default()
 client = commands.Bot(command_prefix="!", intents=intents)
@@ -26,6 +28,7 @@ async def setup_hook():
     await client.add_cog(WeaponCommands(weapons))
     await client.add_cog(SkillCommands(characters_collection))
     await client.add_cog(ChainCommands(characters_collection))
+    await client.add_cog(EchoCommands(echoes))
 client.setup_hook = setup_hook
 @client.event
 async def on_ready():
@@ -38,7 +41,7 @@ async def test_command(interactrion):
 
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.4.8"
+version = "0.5.0"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(f"目前支援角色數量: {characters_collection.count_documents({})}")
