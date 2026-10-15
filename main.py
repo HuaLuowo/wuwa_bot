@@ -9,6 +9,7 @@ from pymongo import MongoClient
 from commands.skill import SkillCommands
 from commands.chain import ChainCommands
 from commands.echo import EchoCommands
+from commands.character_guide import CharacterGuide
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
@@ -28,6 +29,7 @@ async def setup_hook():
     await client.add_cog(WeaponCommands(weapons))
     await client.add_cog(SkillCommands(characters_collection))
     await client.add_cog(ChainCommands(characters_collection))
+    await client.add_cog(CharacterGuide(client))
     await client.add_cog(EchoCommands(echoes))
 client.setup_hook = setup_hook
 @client.event
