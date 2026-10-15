@@ -7,6 +7,9 @@ def get_echo(echoes, echo_name):
 
 def create_echo_card(echo_name, data):
     card = discord.Embed(title = echo_name)
+    image_url = data.get("image")
+    if image_url:
+        card.set_thumbnail(url=image_url)
     card.add_field(name="Cost", value=data["cost"])
     card.add_field(name = "出現位置", value=data["location"])
     card.add_field(name = "聲骸強度", value= data["intensity"])
@@ -21,9 +24,16 @@ def create_echo_card(echo_name, data):
     sets = data.get("sets") or []
     set_names = []
     for set_data in sets:
-        set_names.append(set_data["name"])
-    result = "\n".join(set_names) or "查無合鳴套裝"
+        effects = set_data["effects"]
+        effects_texts = []
+        for effect in effects:
+            effects_texts.append(f"{effect['pieces']}件套: {effect['description']}")
+        effect_result = "\n".join(effects_texts)
+        set_result = f"{set_data['name']}\n{effect_result}"
+        set_names.append(set_result)
+    result = "\n\n".join(set_names) or "查無合鳴套裝"
     card.add_field(name="合鳴套裝", value = result, inline = False)
+
     return card
 
 class EchoCommands(commands.Cog):
