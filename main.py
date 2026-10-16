@@ -19,6 +19,7 @@ db = mongo_client["wuwa_bot"]
 weapons = db["weapons"]
 echoes = db["echoes"]
 characters_collection = db["characters"]
+character_guides = db["character_guides"]
 intents = discord.Intents.default()
 client = commands.Bot(command_prefix="!", intents=intents)
 tree = client.tree
@@ -29,7 +30,7 @@ async def setup_hook():
     await client.add_cog(WeaponCommands(weapons))
     await client.add_cog(SkillCommands(characters_collection))
     await client.add_cog(ChainCommands(characters_collection))
-    await client.add_cog(CharacterGuide(client))
+    await client.add_cog(CharacterGuide(client, character_guides))
     await client.add_cog(EchoCommands(echoes))
 client.setup_hook = setup_hook
 @client.event
