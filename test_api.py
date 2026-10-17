@@ -2,6 +2,7 @@ import requests
 import json
 import re
 import os
+from urllib.parse import urljoin
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
@@ -51,6 +52,13 @@ for character in characters:
         detail_response = requests.get(detail_url, timeout=10)
         detail_response.raise_for_status()
         detail_data = detail_response.json()
+        english_url = f"https://api.encore.moe/en/character/{character_id}"
+        english_response = requests.get(english_url, timeout = 10)
+        english_response.raise_for_status()
+        english_data = english_response.json()
+        english_name = english_data["Name"]["Content"]
+        url_name = english_name.lower().replace(" ","-")
+        guide_url = f"https://www.prydwen.gg/wuthering-waves/characters/{url_name}"
     except Exception as e:
         print("角色資料取得失敗: ", e)
         continue
@@ -142,6 +150,7 @@ for character in characters:
     new_character_data = {
     "id": detail_data["Id"],
     "name": detail_data["Name"]["Content"],
+    "name_en": english_name,
     "rarity": detail_data["QualityId"],
     "attribute": detail_data["ElementName"],
     "weapon" : detail_data["WeaponTypeName"],
@@ -161,6 +170,8 @@ for character in characters:
     )
 
     if existing_character is not None:
+        if existing_character.get("guide_url"):
+            new_character_data["guide_url"] = existing_character["guide_url"]
         characters_collection.update_one(
             {"_id": existing_character["_id"]},
             {"$set": new_character_data}
