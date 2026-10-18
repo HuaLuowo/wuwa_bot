@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from character_autocomplete import character_autocomplete as shared_character_autocomplete
 
 def get_character(characters, character_name):
     return characters.find_one({"name": character_name})
@@ -53,24 +54,13 @@ def create_character_card(character_name, data):
 
     return card
 
-async def character_autocomplete(interaction, current, characters_list):
-    result = []
-    for character in characters_list.find():
-        name = character["name"]
-        if current in name:
-            result.append(discord.app_commands.Choice(
-            name= name,
-            value= name
-            ))
-    return result[:25]  
-
 
 class CharacterCommands(commands.Cog):
     def __init__(self, characters):
         self.characters = characters
 
     async def autocomplete_character(self, interaction, current:str):
-        return await character_autocomplete(interaction,current,self.characters)
+        return await shared_character_autocomplete(interaction,current,self.characters)
 
     @discord.app_commands.command(name = "角色", description="查詢角色資料")
     @discord.app_commands.autocomplete(character_name=autocomplete_character)

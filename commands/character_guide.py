@@ -1,6 +1,7 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
+from character_autocomplete import character_autocomplete as shared_character_autocomplete
 
 
 def get_character_guide(character_collection, character_name):
@@ -16,18 +17,9 @@ class CharacterGuide(commands.Cog):
         interaction: discord.Interaction,
         current :str
     ):
-        collection = self.character_collection
-        characters = collection.find({}, {"name":1, "_id": 0})
-
-        matched = []
-        for character in characters:
-            name = character["name"]
-            if current.lower() in name.lower():
-                matched.append(name)
-        return[
-            app_commands.Choice(name = name, value=name)
-            for name in matched[:25]
-        ]
+        return await shared_character_autocomplete(
+            interaction, current, self.character_collection
+        )
 
     @app_commands.command(name = "角色養成攻略", description = "查詢角色養成攻略")
     @app_commands.rename(character_name = "角色")

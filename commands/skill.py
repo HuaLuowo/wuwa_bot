@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from commands.character import character_autocomplete
+from character_autocomplete import character_autocomplete
 
 class SkillSelect(discord.ui.Select):
     def __init__(self,skills):
