@@ -2,7 +2,6 @@ import requests
 import json
 import re
 import os
-from urllib.parse import urljoin
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
@@ -58,6 +57,8 @@ for character in characters:
         english_data = english_response.json()
         english_name = english_data["Name"]["Content"]
         url_name = english_name.lower().replace(" ","-")
+        if url_name == "shorekeeper":
+            url_name = "the-shorekeeper"
         guide_url = f"https://www.prydwen.gg/wuthering-waves/characters/{url_name}"
     except Exception as e:
         print("角色資料取得失敗: ", e)
@@ -151,6 +152,7 @@ for character in characters:
     "id": detail_data["Id"],
     "name": detail_data["Name"]["Content"],
     "name_en": english_name,
+    "guide_url": guide_url,
     "rarity": detail_data["QualityId"],
     "attribute": detail_data["ElementName"],
     "weapon" : detail_data["WeaponTypeName"],
@@ -170,7 +172,8 @@ for character in characters:
     )
 
     if existing_character is not None:
-        if existing_character.get("guide_url"):
+        if existing_character.get("guide_url") and existing_character["guide_url"] != guide_url and english_name != "Shorekeeper":
+            print("攻略網址不同: ", english_name)
             new_character_data["guide_url"] = existing_character["guide_url"]
         characters_collection.update_one(
             {"_id": existing_character["_id"]},

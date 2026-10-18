@@ -11,8 +11,27 @@ class CharacterGuide(commands.Cog):
         self.bot = bot
         self.character_collection = character_collection
 
+    async def character_autocomplete(
+        self,
+        interaction: discord.Interaction,
+        current :str
+    ):
+        collection = self.character_collection
+        characters = collection.find({}, {"name":1, "_id": 0})
+
+        matched = []
+        for character in characters:
+            name = character["name"]
+            if current.lower() in name.lower():
+                matched.append(name)
+        return[
+            app_commands.Choice(name = name, value=name)
+            for name in matched[:25]
+        ]
+
     @app_commands.command(name = "角色養成攻略", description = "查詢角色養成攻略")
     @app_commands.rename(character_name = "角色")
+    @app_commands.autocomplete(character_name=character_autocomplete)
     async def character_guide(self,interaction:discord.Interaction, character_name:str):
         guide = get_character_guide(self.character_collection, character_name)
         if guide is None:
