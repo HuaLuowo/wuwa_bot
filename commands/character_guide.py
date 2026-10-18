@@ -48,10 +48,14 @@ class CharacterGuide(commands.Cog):
             value= guide.get("weapon", "資料整理中"),
             inline=False
         )
+        view = discord.ui.View()
         if guide_url:
-            embed.add_field(
-                name= "詳細養成攻略",
-                value= f"[點擊查看攻略]({guide_url})",
-                inline=False
+            button = discord.ui.Button(
+                label= "查看完整攻略",
+                url = guide_url
             )
-        await interaction.response.send_message(embed=embed)
+            view.add_item(button)
+        await interaction.response.send_message(
+            embed=embed,
+            view= view
+            )
