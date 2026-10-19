@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from character_autocomplete import character_autocomplete as shared_character_autocomplete
+from commands.character import get_attribute_color
 
 
 def get_character_guide(character_collection, character_name):
@@ -31,15 +32,26 @@ class CharacterGuide(commands.Cog):
             return
         guide_url = guide.get("guide_url")
 
+        rarity = guide.get("rarity", 0)
+        stars = "★" * rarity
+        tag_names = []
+        for tag in guide.get("tags",[]):
+            tag_names.append(tag["name"])
+        tag_text = " | ".join(tag_names)
+
         embed = discord.Embed(
             title=f"{character_name}的角色攻略",
-            description= f"屬性:{guide.get('attribute', '未知')}"
+            description= f"{stars}\n{guide.get('attribute', '未知')} | {guide.get('weapon', '未知')}",
+            color= get_attribute_color(guide.get("attribute"))
             )
-        embed.add_field(
-            name = "武器類型",
-            value= guide.get("weapon", "資料整理中"),
-            inline=False
-        )
+        if tag_text:
+            embed.add_field(
+                name= "角色定位",
+                value= tag_text,
+                inline= False
+            )
+        if guide.get("character_image"):
+            embed.set_image(url = guide["character_image"])
         view = discord.ui.View()
         if guide_url:
             button = discord.ui.Button(

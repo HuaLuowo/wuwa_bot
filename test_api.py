@@ -44,6 +44,7 @@ with open("api_characters.json", "w", encoding="utf-8") as file:
 
 item_name_cache = {}
 full_character_list = []
+failed_character_ids = []
 for character in characters:
     character_id = character["Id"]
     detail_url = f"https://api.encore.moe/zh-Hant/character/{character_id}"
@@ -62,6 +63,7 @@ for character in characters:
         guide_url = f"https://www.prydwen.gg/wuthering-waves/characters/{url_name}"
     except Exception as e:
         print("角色資料取得失敗: ", e)
+        failed_character_ids.append(character_id)
         continue
 
     skills = detail_data.get("Skills")
@@ -157,7 +159,7 @@ for character in characters:
     "attribute": detail_data["ElementName"],
     "weapon" : detail_data["WeaponTypeName"],
     "image" : detail_data["RoleHeadIconLarge"],
-    "character_image": detail_data["RolePortrait"],
+    "character_image": detail_data.get("FormationRoleCard") or detail_data.get("RolePortrait"),
     "introduction": introduction,
     "tags": clean_tags,
     "profile": profile,
@@ -167,11 +169,15 @@ for character in characters:
 }
     full_character_list.append(new_character_data)
 
+    if not new_character_data["character_image"]:
+        new_character_data.pop("character_image")
     existing_character = characters_collection.find_one(
         {"id": new_character_data["id"]}
     )
 
     if existing_character is not None:
+        if existing_character.get("character_image"):
+            new_character_data.pop("character_image", None)
         if existing_character.get("guide_url") and existing_character["guide_url"] != guide_url and english_name != "Shorekeeper":
             print("攻略網址不同: ", english_name)
             new_character_data["guide_url"] = existing_character["guide_url"]
@@ -206,3 +212,4 @@ for character in full_character_list:
                 )
 
 print("MongoDB角色數量: ", characters_collection.count_documents({}))
+print("取得API失敗的角色ID: ", failed_character_ids)
