@@ -10,6 +10,7 @@ from commands.skill import SkillCommands
 from commands.chain import ChainCommands
 from commands.echo import EchoCommands
 from commands.character_guide import CharacterGuide
+from commands.character_materials import CharacterMaterials
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
@@ -31,6 +32,7 @@ async def setup_hook():
     await client.add_cog(SkillCommands(characters_collection))
     await client.add_cog(ChainCommands(characters_collection))
     await client.add_cog(CharacterGuide(client, characters_collection))
+    await client.add_cog(CharacterMaterials(client, characters_collection))
     await client.add_cog(EchoCommands(echoes))
 client.setup_hook = setup_hook
 @client.event
@@ -44,7 +46,7 @@ async def test_command(interactrion):
 
 bot_name = "鳴潮 Discord bot"
 author = "HuaLuowo"
-version = "0.5.7"
+version = "0.5.8"
 description = "提供鳴潮角色、武器、聲骸與攻略查詢"
 
 print(f"目前支援角色數量: {characters_collection.count_documents({})}")
