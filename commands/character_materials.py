@@ -2,6 +2,10 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from character_autocomplete import character_autocomplete as shared_character_autocomplete
+from material_image import create_material_image
+import io
+import asyncio
+import traceback
 
 class CharacterMaterials(commands.Cog):
     def __init__(self, bot, character_collection):
@@ -19,28 +23,66 @@ class CharacterMaterials(commands.Cog):
     @app_commands.command(name = "角色突破材料", description="查詢角色突破材料總覽")
     @app_commands.rename(character_name = "角色")
     @app_commands.autocomplete(character_name= character_autocomplete)
-    async def character_materials(self, interaction: discord.Interaction, character_name:str):    
-        character = self.character_collection.find_one(
-            {"name": character_name}
-        )
+    async def character_materials(self, interaction: discord.Interaction, character_name:str):
+        await interaction.response.defer()
+
+        try:
+            character = await asyncio.to_thread(
+                self.character_collection.find_one,
+                {"name": character_name}
+            )
+        except Exception:
+            traceback.print_exc()
+            await interaction.followup.send(
+                "角色資料查詢失敗，請稍後再試。"
+            )
+            return
         if character is None:
-            await interaction.response.send_message("找不到角色資料")
+            await interaction.followup.send("找不到角色資料")
             return
         breaches = character.get("breaches", [])
         materials_total = {}
         for breach in breaches:
             for material in breach.get("materials", []):
                 name = material["material_name"]
+                material_id = material["material_id"]
                 quantity = material["quantity"]
-                materials_total[name] = materials_total.get(name, 0) + quantity
-        embed = discord.Embed(
-            title= f"{character_name} 突破材料總覽",
-            color= discord.Color.blue()
-        )
-        for name, quantity in materials_total.items():
-            embed.add_field(
-                name = name,
-                value=f"× {quantity}",
-                inline= False
+                if material_id not in materials_total:
+                    materials_total[material_id] = {
+                        "material_id": material_id,
+                        "material_name": name,
+                        "quantity": 0
+                    }
+                materials_total[material_id]["quantity"] += quantity
+        materials_list = list(materials_total.values())
+        if not materials_list:
+            await interaction.followup.send("這個角色沒有突破材料資料")
+            return
+        try:
+            image = await asyncio.to_thread(
+                create_material_image,
+                materials_list
             )
-        await interaction.response.send_message(embed=embed)
+            image_buffer = io.BytesIO()
+            image.save(image_buffer, format="PNG")
+            image_buffer.seek(0)
+            file = discord.File(image_buffer, filename="character_materials.png")
+        except Exception:
+            traceback.print_exc()
+            await interaction.followup.send(
+                "材料圖片產生失敗，請稍後再試。"
+            )
+            return
+        try:
+            await interaction.followup.send(
+                content= f"{character_name} 突破材料總覽",
+                file= file
+            )
+        except discord.HTTPException:
+            traceback.print_exc()
+            try:
+                await interaction.followup.send(
+                    "圖片傳送失敗，請稍後再試。"
+                )
+            except discord.HTTPException:
+                traceback.print_exc()
