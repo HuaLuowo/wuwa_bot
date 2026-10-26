@@ -17,6 +17,7 @@ class SonataCommands(commands.Cog):
             )
 
 
+
         cost_groups = {
              4:[],
              3:[],
@@ -33,6 +34,15 @@ class SonataCommands(commands.Cog):
              if cost in cost_groups:
                   seen_names.add(name)
                   cost_groups[cost].append(echo)
+        set_effects = []
+
+        for echo in echoes:
+            for sonata_set in echo.get("sets", []):
+                if sonata_set.get("name") == set_name:
+                    set_effects = sonata_set.get("effects", [])
+                    break
+            if set_effects:
+                break
         image_buffer = await asyncio.to_thread(
              create_sonata_image,
              cost_groups
@@ -42,11 +52,25 @@ class SonataCommands(commands.Cog):
              filename= "sonata.png"
         )
 
+        embed = discord.Embed(
+             title = f"合鳴套裝: {set_name}",
+             color= discord.Color.blue()
+        )
+        for effect in set_effects:
+             pieces = effect.get("pieces")
+             description = effect.get("description", "無效果說明")
+
+             embed.add_field(
+                  name = f"{pieces}件套效果",
+                  value= description,
+                  inline=False
+             )
+
         await interaction.followup.send(
-            content=f"合鳴套裝：{set_name}\n符合的聲骸數量：{sum(len(group) for group in cost_groups.values())}",
+            content=f"符合的聲骸數量: {sum(len(group) for group in cost_groups.values())}",
+            embed= embed,
             file= image_file
         )
-
 
     async def sonata_autocomplete(
             self,
